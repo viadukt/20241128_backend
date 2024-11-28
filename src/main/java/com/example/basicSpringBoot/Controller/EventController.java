@@ -9,7 +9,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+/**
+ * A REST-controller for the Event-entity.
+ *
+ * @author viadukt
+ * @version 1.0
+ */
 @RestController
 @RequestMapping("/api/")
 @CrossOrigin(origins = "http://localhost:5173")
@@ -18,16 +23,19 @@ public class EventController {
     @Autowired
     EventRepository eventRepository;
 
+    // List all events in the table.
     @GetMapping("/getEvents")
     public List<Event> getEvents() {
         return eventRepository.findAll();
     }
 
+    // Add a new event to the table.
     @PostMapping("/postEvent")
     public void addEvent(@RequestBody Event event) {
         eventRepository.save(event);
     }
 
+    // Substract the amount given in the body from the amount stored in the database and update the new entry.
     @PutMapping("/putEvent/{id}")
     public ResponseEntity<Event> updateTicketsLeft(@PathVariable Long id, @RequestBody int amountToBuy) {
         Event event = eventRepository.findById(id)

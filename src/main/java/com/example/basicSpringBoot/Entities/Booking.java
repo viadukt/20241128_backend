@@ -3,6 +3,12 @@ package com.example.basicSpringBoot.Entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+/**
+ * The Booking-entity which generates a table to store bookings.
+ *
+ * @author viadukt
+ * @version 1.0
+ */
 @Data
 @Entity
 @Table(name = "booking")
